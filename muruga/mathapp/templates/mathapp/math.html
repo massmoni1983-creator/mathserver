@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lamp Power Calculator</title>
+    <style>
+        body {
+            background: linear-gradient(90deg,#5761B2, #1FC5A8); 
+            
+        }
+
+        h1 {
+            color: rgb(0, 139, 25);
+            font-size: 28px;
+        }
+
+        .container {
+            background-color: #cb6464;  
+            width: 500px;
+            padding: 50px; 
+        }
+
+        label {
+            font-size: 26px;
+            color: #4c2626;
+        }
+
+        input {
+            width: 80%;
+            font-size: 24px;
+            border-radius: 8px;
+            border: 2px solid #0a0606;
+        }
+
+        button {
+            font-size: 24px;
+            background-color: rgb(125, 139, 0);
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: rgb(0, 107, 128);
+        }
+
+        h2 {
+            color: rgb(100, 0, 70);
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Incandescent Bulb Power Calculator</h1>
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Intensity (I):</label>
+            <input type="number" name="intensity" required>
+
+            <label>Resistance (R):</label>
+            <input type="number" name="resistance" required>
+
+            <button type="submit">Calculate Power</button>
+        </form>
+
+        {% if result %}
+            <h2>Power (P) = {{ result }} Watts</h2>
+        {% endif %}
+    </div>
+    </center>
+</body>
+</html>
